@@ -219,7 +219,6 @@ appid|appid|是|String|appid,由商户后台获取，或者登录获取
 支付方式|payment|是|String|micropay,alipay.qrcode,wechat.qrcode
 支付提供方|provider|可选|String|provider取值:wechat,alipay 当payment为micropay时,如果指定了provider,则会检查相应的支付授权码是否是对应的支付提供方的code，如果不是，不能支付
 订单金额|total_fee|是|Int|支付金额 单位为"分" 如10即0.10元
-优惠金额|discount|可选|Int|优惠金额 单位"分" 如25即0.25元,默认为0
 支付授权码|code|可选|String|payment为"micropay"时填写 如支付宝 288271620985824610 微信 134519771100657507 服务端据此参数值区分
 商户自身订单号|out\_trade\_no|可选|String|如果商户有自己的订单系统，可以自己生成订单号，否则建议交由蓝海支付后台自动生成
 异步通知url|notify_url|可选|String|异步通知url

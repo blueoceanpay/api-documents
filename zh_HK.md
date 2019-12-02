@@ -217,7 +217,6 @@ appid|appid|是|String|appid,由商戶後台獲取，或者登錄獲取
 簽名|sign|是|String參考簽名方法
 支付方式|payment|是|String|micropay,alipay.qrcode,wechat.qrcode
 訂單金額|total_fee|是|Int|支付金額 單位為"分" 如10即0.10元
-優惠金額|discount|否|Int|優惠金額 單位"分" 如25即0.25元,默認為0
 支付授權碼|code|可選|String|payment為"micropay"時填寫 如支付寶 288271620985824610 微信 134519771100657507 服務端據此參數值區分
 商戶自身訂單號|out\_trade\_no|可選|String|如果商戶有自己的訂單系統，可以自己生成訂單號，否則建議交由藍海支付後台自動生成
 異步通知url|notify_url|可選|String|異步通知url
