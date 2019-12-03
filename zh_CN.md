@@ -1417,19 +1417,21 @@ appid|appid|是|String(32)|appid,登录时获取
 
 字段|变量名|必填|类型|描述
 ----|----|----|----|----
-终端编号|terminalId|是|String(255)|终端编号
-门店id|storeId|否|String(255)|门店编号
-商户id|merchantId|否|String(255)|商户id
-用户信息|userInfo|否|String(255)|用户信息
+终端编号|terminal_id|是|String(255)|终端编号
+appid|appid|否|String|appid,由商户后台获取，或者登录获取
+电量|battery|是|double(3,2)|pos机电量，如56.52
+是否在充电|is_charge|是|int|pos机是否在充电，1在充电，0没在充电
+是否运行BOP程序|is_run_bop|是|int|pos机是否在运行bop程序，1是，0否
+是否登录|is_login|是|int|bop程序是否登录
 预留扩展字段|ext|否|String(4096)|默认值空字符串
-
+数据签名|sign|String|如"7FB42F08C85670A86431F9710xxxxxx",用于本地校验
 
 请求参数示例:
 
 ```
 {
-  "terminalId":"1903065464xxx",
-  "storeId":"123456"
+  "terminal_id":"1903065464xxx",
+  "is_charge":"1"
 }
 ```
 
