@@ -240,6 +240,7 @@ wechat.qrcode|微信二維碼
 blueocean.qrcode|混合二維碼 可以直接跳轉到qrcode對應的網址支付，也可以生成二維碼供用戶掃描
 wechat.jsapi|公眾號、小程序支付
 wechat.app|微信APP支付
+unionpay.qrcode|銀聯二維碼
 
 支付返回後，檢查交易狀態trade_state,並根據其結果，決定是否調用訂單查詢接口進行結果查詢處理
 
@@ -1333,4 +1334,4 @@ appid|appid|是|String(32)|appid,登錄時獲取
 
 ## Update
 
-2019.05.23
+2019.12.12

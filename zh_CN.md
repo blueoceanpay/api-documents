@@ -244,6 +244,7 @@ wechat.qrcode|微信二维码
 blueocean.qrcode|混合二维码 可以直接跳转到qrcode对应的网址支付，也可以生成二维码供用户扫描
 wechat.jsapi|公众号、小程序支付
 wechat.app|微信APP支付
+unionpay.qrcode|银联二维码
 
 
 支付返回后，检查交易状态trade_state,并根据其结果，决定是否调用订单查询接口进行结果查询处理
@@ -1781,7 +1782,7 @@ appid|appid|是|String|appid,登录时获取
 
 ## Update
 
-2019.11.07
+2019.12.12
 
 
 
