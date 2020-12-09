@@ -245,6 +245,7 @@ blueocean.qrcode|混合二维码 可以直接跳转到qrcode对应的网址支�
 wechat.jsapi|公众号、小程序支付
 wechat.app|微信APP支付
 unionpay.qrcode|银联二维码
+unionpay.link|银联UPOP
 
 
 支付返回后，检查交易状态trade_state,并根据其结果，决定是否调用订单查询接口进行结果查询处理
@@ -666,6 +667,62 @@ PAYERROR:支付异常
     "transaction_id": "",
     "wallet": "CN",
     "sign": "1A878D7E06559821Cxxxxxxxxxx"
+  }
+}
+
+```
+
+### 银联UPOP示例
+
+请求参数
+
+```
+{
+  "appid": "1000258",
+  "payment": "unionpay.link",
+  "total_fee": 10,
+  "wallet": "CN",
+  "notify_url":"http://blueoceanpay.com/",
+  "sign": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+}
+```
+响应结果
+
+```
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "adapter": "chinaums",
+    "appid": 1000258,
+    "attach": "",
+    "bank_type": "",
+    "body": "",
+    "cash_fee": "0",
+    "cash_fee_type": "",
+    "create_time": "1606806091",
+    "detail": "",
+    "discount": "0",
+    "fee_type": "HKD",
+    "id": "2275866",
+    "is_print": "0",
+    "is_subscribe": "N",
+    "mch_name": "BlueOcean Pay",
+    "nonce_str": "rZblCN3Tn5",
+    "out_trade_no": "1120201201150xxxxxxxxxxxxxxxx",
+    "pay_amount": "10",
+    "provider": "unionpay",
+    "qrcode": "https://apigw.gnete.com.hk/easyLinkApi/Payment/CreateChannelData?amount=0.1&currency=344&accessKey=1989fc10edf88de13c7176c2b3956b9e08b94cfe6d77231d0069fxxxxxxxxxxx&paymentInfoId=69cf4a55e6164cd9b293xxxxxxxxxxxx",
+    "refundable": 0,
+    "sn": "1120201201150xxxxxxxxxxxxxxxx",
+    "time_end": 0,
+    "total_fee": "10",
+    "total_refund_fee": 0,
+    "trade_state": "USERPAYING",
+    "trade_type": "LINK",
+    "transaction_id": "8a8994a975789xxxxxxxxxxxxxxxxxxx",
+    "wallet": "CN",
+    "sign": "670031A0FC96E723AA9xxxxxxxxxxxxx"
   }
 }
 

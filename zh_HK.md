@@ -241,6 +241,7 @@ blueocean.qrcode|混合二維碼 可以直接跳轉到qrcode對應的網址支�
 wechat.jsapi|公眾號、小程序支付
 wechat.app|微信APP支付
 unionpay.qrcode|銀聯二維碼
+unionpay.link|銀聯UPOP
 
 支付返回後，檢查交易狀態trade_state,並根據其結果，決定是否調用訂單查詢接口進行結果查詢處理
 
@@ -550,6 +551,7 @@ PAYERROR:支付異常
   }
 }
 
+```
 ### 微信APP示例
 
 請求參數
@@ -606,6 +608,64 @@ PAYERROR:支付異常
 }
 
 ```
+
+
+### 银联UPOP示例
+
+請求參數
+
+```
+{
+  "appid": "1000258",
+  "payment": "unionpay.link",
+  "total_fee": 10,
+  "wallet": "CN",
+  "notify_url":"http://blueoceanpay.com/",
+  "sign": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+}
+```
+響應結果
+
+```
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "adapter": "chinaums",
+    "appid": 1000258,
+    "attach": "",
+    "bank_type": "",
+    "body": "",
+    "cash_fee": "0",
+    "cash_fee_type": "",
+    "create_time": "1606806091",
+    "detail": "",
+    "discount": "0",
+    "fee_type": "HKD",
+    "id": "2275866",
+    "is_print": "0",
+    "is_subscribe": "N",
+    "mch_name": "BlueOcean Pay",
+    "nonce_str": "rZblCN3Tn5",
+    "out_trade_no": "1120201201150xxxxxxxxxxxxxxxx",
+    "pay_amount": "10",
+    "provider": "unionpay",
+    "qrcode": "https://apigw.gnete.com.hk/easyLinkApi/Payment/CreateChannelData?amount=0.1&currency=344&accessKey=1989fc10edf88de13c7176c2b3956b9e08b94cfe6d77231d0069fxxxxxxxxxxx&paymentInfoId=69cf4a55e6164cd9b293xxxxxxxxxxxx",
+    "refundable": 0,
+    "sn": "1120201201150xxxxxxxxxxxxxxxx",
+    "time_end": 0,
+    "total_fee": "10",
+    "total_refund_fee": 0,
+    "trade_state": "USERPAYING",
+    "trade_type": "LINK",
+    "transaction_id": "8a8994a975789xxxxxxxxxxxxxxxxxxx",
+    "wallet": "CN",
+    "sign": "670031A0FC96E723AA9xxxxxxxxxxxxx"
+  }
+}
+
+```
+
 
 ### 拿到api數據(data.jsapi使用JSON.parse(data.jsapi)轉為JSON對象)後參考微信文檔，完成h5調用
 
