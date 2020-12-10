@@ -965,6 +965,7 @@ appid|appid|是|String|appid,登录时获取
     "out_trade_no": "1120180207xxxxxxxxxxxxxxxxxxxxx",
     "provider": "wechat",
     "qrcode": "weixin://wxpay/bizpayurl?pr=wDmjTFq",
+    "refundable": "10",
     "sn": "1120180207xxxxxxxxxxxxxxxxxxxx",
     "time_end": 0,
     "total_fee": 10,

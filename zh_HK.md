@@ -899,6 +899,7 @@ appid|appid|是|String|appid,登錄時獲取
     "out_trade_no": "11201802071854269363947431",
     "provider": "wechat",
     "qrcode": "weixin://wxpay/bizpayurl?pr=wDmjTFq",
+    "refundable": "10",
     "sn": "11201802071854269363947431",
     "time_end": 0,
     "total_fee": 10,
