@@ -835,7 +835,7 @@ appid|appid|是|String|
 商户订单号|out\_trade\_no|否|String|商户订单号
 退款金额|refund_fee|否|Int|可选参数，默认为订单总额，即全额退款 支付宝不支持部分退款
 退款描述|refund_desc|否|String|退款说明
-退款密码|password|是|String|退款密码
+退款密码|password|否|String|退款密码
 
 #### 返回结果
 

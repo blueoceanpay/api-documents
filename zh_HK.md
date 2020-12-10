@@ -771,7 +771,7 @@ appid|appid|是|String|appid,登錄時獲取
 商戶訂單號|out\_trade\_no|否|String|商戶訂單號
 退款金額|refund_fee|否|Int|可選參數，默認為訂單總額，即全額退款 支付寶不支持部分退款
 退款描述|refund_desc|否|String|退款說明
-退款密碼|password|是|String|退款密碼
+退款密碼|password|否|String|退款密碼
 
 #### 返回結果
 
