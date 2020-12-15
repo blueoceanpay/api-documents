@@ -159,6 +159,9 @@ https://api.uk.blueoceanpay.com
 491002|參數長度不能超過限定長度|檢查參數長度
 491003|參數不能為空|傳遞參數值
 499999|未知錯誤
+492001|參數格式不符合指定要求|如不符合規則運算式
+492002|數據不存在|如訂單數據不存在
+492003|上游廠商不支持此功能|排查上游是否開通這項功能
 
 
 ### 1.7 通用響應數據結構
@@ -838,6 +841,84 @@ appid|appid|是|String|appid,登錄時獲取
 }
 
 ```
+
+### 2.2.1 退款査詢
+
+#### Api:
+
+```
+/order/refundquery
+```
+#### Parameters 請求參數
+
+字段|變量名|必填|類型|描述
+----|----|----|----|----
+appid|appid|是|String|
+簽名|sign|是|String|
+退款單號|customer_refund_no|是|String|退款單號
+
+#### 返回結果
+
+字段|變量名|必填|類型|描述
+----|----|----|----|----
+返回碼|code|是|String(32)|返回碼，請參考返回碼表
+返回信息|message|是|String(256)|返回信息，成功信息或錯誤信息
+返回數據|data|否|Array/String|返回數據集或其他提示信息
+
+###### 如果code=200,data参数：
+
+字段|變量名|必填|類型|描述
+----|----|----|----|----
+商戶退單號|out\_refund_no|是|String（32）|商戶退單號
+商戶訂單號|out\_trade_no|是|String（32）|商戶訂單號
+藍海訂單號|sn|是|String（32）|藍海訂單號
+標價金額|total_fee|是|Int|最小組織港幣分
+標價幣種|fee_type|是|String（8）|一般是HKD
+退款金額|refund\_fee|是|Int|最小組織港幣分
+現金支付金額|cash_fee|是|Int|最小組織人民幣分
+現金支付幣種|cash\_fee_type|是|String（8）|支付貨幣如CNY
+退款時間|refund_time|是|String（15）|退款時間
+退款狀態|refund_status|是|String（16）| SUCCESS
+
+#### 請求參數
+
+```
+{
+    "appid": "1000258",
+    "customer_refund_no": "11202012101315545xxxxxxxxxxxxxx",
+    "sign": "03818F947E2398376B2xxxxxxxxxxxxx"
+}
+```
+
+#### 返回結果示例
+
+```
+{
+   "adapter": "wantu",
+   "appid": 1000258,
+   "cash_fee": "0",
+   "cash_fee_type": "CNY",
+   "discount": "0",
+   "fee_type": "HKD",
+   "mch_name": "BlueOcean Pay",
+   "nonce_str": "0124tYLSSH",
+   "out_refund_no": "11202012101315545xxxxxxxxxxxxxx",
+   "out_trade_no": "11202012101314xxxxxxxxxxxxxxx",
+   "pay_amount": "10",
+   "provider": "alipay",
+   "refund_desc": "",
+   "refund_fee": "5",
+   "refund_status": "SUCCESS",
+   "refund_time": "2020-12-10 13:14:49",
+   "sn": "11202012101314xxxxxxxxxxxxxxx",
+   "total_fee": "10",
+   "trade_type": "MICROPAY",
+   "wallet": "CN",
+   "sign": "9957257C48C00CA4Bxxxxxxxxxxxxxxx"
+}
+
+```
+
 
 ### 2.3 訂單操作
 

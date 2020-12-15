@@ -161,6 +161,9 @@ https://api.uk.blueoceanpay.com
 491002|参数长度不能超过限定长度|检查参数长度
 491003|参数不能为空|传递参数值
 499999|未知错误
+492001|参数格式不符合指定要求|如不符合正则表达式
+492002|数据不存在|如订单数据不存在
+492003|上游厂商不支持此功能|排查上游是否开通这项功能
 
 ### 1.7 通用响应数据结构
 
@@ -899,6 +902,85 @@ appid|appid|是|String|
    "transaction_id": "2NMJVPxxxxxxxxxxxxxxxxx",
    "wallet": "",
    "sign": "FC173A8B25C8AACF1xxxxxxxxxxxxxxxxxxx"
+}
+
+```
+
+
+### 2.2.1 退款查询
+
+#### Api:
+
+```
+/order/refundquery
+```
+#### Parameters 请求参数
+
+字段|变量名|必填|类型|描述
+----|----|----|----|----
+appid|appid|是|String|
+签名|sign|是|String|
+退款单号|customer_refund_no|是|String|退款单号
+
+#### 返回结果
+
+字段|变量名|必填|类型|描述
+----|----|----|----|----
+返回码|code|是|String(32)|返回码，请参考返回码表
+返回信息|message|是|String(256)|返回信息，成功信息或错误信息
+返回数据|data|否|Array/String|返回数据集或其他提示信息
+
+###### 如果code=200,data参数：
+
+字段|变量名|必填|类型|描述
+----|----|----|----|----
+商户退单号|out\_refund_no|是|String(32)|商户退单号
+商户订单号|out\_trade_no|是|String(32)|商户订单号
+蓝海订单号|sn|是|String(32)|蓝海订单号
+标价金额|total_fee|是|Int|最小单位 港币分
+标价币种|fee_type|是|String(8)|一般是HKD
+退款金额|refund\_fee|是|Int|最小单位 港币分
+现金支付金额|cash_fee|是|Int|最小单位 人民币分
+现金支付币种|cash\_fee_type|是|String(8)| 支付货币如 CNY
+退款时间|refund_time|是|String(15)|退款时间
+退款状态|refund_status|是|String(16)| SUCCESS
+
+
+#### 请求参数
+
+```
+{
+    "appid": "1000258",
+    "customer_refund_no": "11202012101315545xxxxxxxxxxxxxx",
+    "sign": "03818F947E2398376B2xxxxxxxxxxxxx"
+}
+```
+
+#### 响应示例
+
+```
+{
+   "adapter": "wantu",
+   "appid": 1000258,
+   "cash_fee": "0",
+   "cash_fee_type": "CNY",
+   "discount": "0",
+   "fee_type": "HKD",
+   "mch_name": "BlueOcean Pay",
+   "nonce_str": "0124tYLSSH",
+   "out_refund_no": "11202012101315545xxxxxxxxxxxxxx",
+   "out_trade_no": "11202012101314xxxxxxxxxxxxxxx",
+   "pay_amount": "10",
+   "provider": "alipay",
+   "refund_desc": "",
+   "refund_fee": "5",
+   "refund_status": "SUCCESS",
+   "refund_time": "2020-12-10 13:14:49",
+   "sn": "11202012101314xxxxxxxxxxxxxxx",
+   "total_fee": "10",
+   "trade_type": "MICROPAY",
+   "wallet": "CN",
+   "sign": "9957257C48C00CA4Bxxxxxxxxxxxxxxx"
 }
 
 ```
