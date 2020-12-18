@@ -1184,7 +1184,8 @@ api：
 结束时间|end_time|否|String|按照退款时间查询订单 如2017-12-13
 开始时间戳|unixtimestamp_start|否|Int|Unix时间戳,目前10位.按照创建时间查询订单 如1555475513
 结束时间戳|unixtimestamp_end|否|Int|Unix时间戳,目前10位.按照创建时间查询订单 如1555475513
-sub\_blue\_mch\_id|sub\_blue\_mch\_id|可选|蓝海子商户Id|蓝海子商户Id
+sub\_blue\_mch\_id|sub\_blue\_mch\_id|否|蓝海子商户Id|蓝海子商户Id
+商户订单号|out_trade_no|否|String|商户订单号(传递该值，则只会查询指定订单的退款列表)
 
 #### trade_state
 ```

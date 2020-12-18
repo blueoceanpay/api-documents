@@ -1112,7 +1112,8 @@ api：
 退款狀態|refund_status|否|String|退款狀態 如 SUCCESS
 開始時間|start_time|否|String|按照退款時間查詢訂單 如 2017-12-12
 結束時間|end_time|否|String|按照退款時間查詢訂單 如2017-12-13
-sub\_blue\_mch\_id|sub\_blue\_mch\_id|No|BlueOceanPay Sub merchant Id|BlueOceanPay Sub merchant Id
+sub\_blue\_mch\_id|sub\_blue\_mch\_id|否|BlueOceanPay Sub merchant Id|BlueOceanPay Sub merchant Id
+商戶訂單號|out_trade_no|否|String|商戶訂單號（傳遞該值，則只會査詢指定訂單的退款清單）
 
 #### trade_state
 ```
