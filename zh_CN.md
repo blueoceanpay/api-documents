@@ -164,6 +164,11 @@ https://api.uk.blueoceanpay.com
 492001|参数格式不符合指定要求|如不符合正则表达式
 492002|数据不存在|如订单数据不存在
 492003|上游厂商不支持此功能|排查上游是否开通这项功能
+492004|请求接口出现超时|请求上游的curl出现超时
+492005|上游接口响应为空|上游没有返回值
+492006|支付宝汇率接口报错|(比如: ILLEGAL_SIGN)
+492007|解析支付宝汇率接口响应的报文失败|上游返回的数据解析失败
+493001|退款单号重复|商户提交的退款单号重复
 
 ### 1.7 通用响应数据结构
 
@@ -1923,9 +1928,212 @@ appid|appid|是|String|appid,登录时获取
 数据创建时间|created_time|是|String|例如 2019-08-26 18:46:16
 数据最后更新时间|updated_time|是|String|例如 2019-08-27 15:55:11
 
+
+### 2.15 获取支付宝汇率接口
+### api
+
+```
+/exchangerate/fetch
+```
+
+### Parameters 请求方式
+*HTTP POST*
+
+### Parameters 请求参数(json格式，放在http请求body中进行传递)
+
+字段|变量名|必填|类型|描述
+----|----|----|----|----
+appid|appid|是|String|appid,登录时获取
+提供方|adapter|是|String|取值为`alipay`(目前只支持alipay)
+签名|sign|是|String|参考签名说明
+
+请求参数示例:
+
+```
+{
+    "appid": "1000258",
+    "adapter": "alipay",
+    "sign": "3776FB394D85F914B3xxxxxxxxxxxxxx"
+}
+```
+
+### Response 响应示例
+#### 获取成功示例
+
+```
+{
+    "code": 200,
+    "message": "success",
+    "data": {
+        "HKD": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "HKD",
+            "rate": "0.847370"
+        },
+        "GBP": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "GBP",
+            "rate": "8.790200"
+        },
+        "PHP": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:08",
+            "currency": "PHP",
+            "rate": "0.136640"
+        },
+        "CHF": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "CHF",
+            "rate": "7.425200"
+        },
+        "EUR": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "EUR",
+            "rate": "8.025700"
+        },
+        "NZD": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "NZD",
+            "rate": "4.663700"
+        },
+        "IDR": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:06",
+            "currency": "IDR",
+            "rate": "0.000462"
+        },
+        "MOP": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "MOP",
+            "rate": "0.821200"
+        },
+        "MYR": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:07",
+            "currency": "MYR",
+            "rate": "1.622391"
+        },
+        "NOK": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "NOK",
+            "rate": "0.760200"
+        },
+        "LKR": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:08",
+            "currency": "LKR",
+            "rate": "0.035005"
+        },
+        "THB": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "THB",
+            "rate": "0.219178"
+        },
+        "RUB": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:08",
+            "currency": "RUB",
+            "rate": "0.088930"
+        },
+        "KRW": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "KRW",
+            "rate": "0.006140"
+        },
+        "AUD": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "AUD",
+            "rate": "4.985100"
+        },
+        "DKK": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "DKK",
+            "rate": "1.079100"
+        },
+        "SGD": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "SGD",
+            "rate": "4.935700"
+        },
+        "JPY": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "JPY",
+            "rate": "0.063653"
+        },
+        "CAD": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "CAD",
+            "rate": "5.126900"
+        },
+        "TWD": {
+            "releaseDate": "2020-12-20",
+            "releaseTime": "11:20:11",
+            "currency": "TWD",
+            "rate": "0.235076"
+        },
+        "SEK": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "SEK",
+            "rate": "0.792500"
+        },
+        "ZAR": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:08",
+            "currency": "ZAR",
+            "rate": "0.446900"
+        },
+        "CZK": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:08",
+            "currency": "CZK",
+            "rate": "0.307109"
+        },
+        "USD": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "10:05:11",
+            "currency": "USD",
+            "rate": "6.562900"
+        },
+        "AED": {
+            "releaseDate": "2020-12-21",
+            "releaseTime": "09:30:07",
+            "currency": "AED",
+            "rate": "1.781142"
+        }
+    }
+}
+```
+
+字段|变量名|必填|类型|描述
+----|----|----|----|----
+返回码|code|是|String(32)|返回码，请参考返回码表
+返回信息|message|是|String(256)|返回信息，成功信息或错误信息
+返回数据|data|否|Array|返回数据集或其他提示信息
+更新日期|releaseDate|是|String|更新日期
+更新时间|releaseTime|是|String|更新时间
+币种|currency|是|String|币种 (例如 港币HKD)
+汇率|rate|是|String|汇率(币种兑换的汇率 例如 HKD:CNY=1:0.847370)
+
+PS:根据支付宝的官方文档，汇率值每天更新一次；返回的汇率是指该币种兑换人民币的汇率。
+
 ## Update
 
-2019.12.12
+2020.12.21
 
 
 
