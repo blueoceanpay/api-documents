@@ -2131,6 +2131,42 @@ appid|appid|是|String|appid,登录时获取
 
 PS:根据支付宝的官方文档，汇率值每天更新一次；返回的汇率是指该币种兑换人民币的汇率。
 
+### 2.16 获取微信汇率接口
+### api
+
+```
+/wechat/exchangerate/query
+```
+
+### Parameters 请求方式
+*HTTP GET*
+
+### Response 响应示例
+#### 获取成功示例
+
+```
+{
+    "code": 200,
+    "message": "success",
+    "data": {
+        "currency": "HKD",
+        "date": "20201221",
+        "rate": "84570000"
+    }
+}
+```
+
+字段|变量名|必填|类型|描述
+----|----|----|----|----
+返回码|code|是|String(32)|返回码，请参考返回码表
+返回信息|message|是|String(256)|返回信息，成功信息或错误信息
+返回数据|data|否|Array|返回数据集或其他提示信息
+币种|currency|是|String|币种 (港币HKD)
+更新日期|date|是|String|更新日期
+汇率|rate|是|String|汇率(币种兑换的汇率 例如 HKD:CNY=1:0.84570000)
+
+PS:根据微信的官方文档，汇率值每天更新一次；返回是兑换人民币的汇率。
+
 ## Update
 
 2020.12.21
