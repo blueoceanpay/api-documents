@@ -231,7 +231,7 @@ appid|appid|是|String|appid,由商户后台获取，或者登录获取
 商户自身订单号|out\_trade\_no|可选|String|如果商户有自己的订单系统，可以自己生成订单号，否则建议交由蓝海支付后台自动生成
 异步通知url|notify_url|可选|String|异步通知url
 openid|sub_openid|可选|String|商户公众号、小程序获取的openid
-appid|sub_appid|可选|String|商户公众号、小程序AppId
+微信APPID|sub_appid|可选|String|商户公众号、小程序、APP的AppId(微信公众号、小程序、APP支付必传)
 sub\_blue\_mch\_id|sub\_blue\_mch\_id|可选|Int|蓝海子商户Id
 store\_id|store\_id|可选|Int|Store Id
 body|body|可选|String|商品名称
@@ -2169,7 +2169,7 @@ PS:根据微信的官方文档，汇率值每天更新一次；返回是兑换�
 
 ## Update
 
-2020.12.21
+2021.01.26
 
 
 
