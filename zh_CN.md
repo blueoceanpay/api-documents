@@ -237,7 +237,7 @@ store\_id|store\_id|可选|Int|Store Id
 body|body|可选|String|商品名称
 附加数据|attach|可选|String|附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据
 h5\_redirect\_url|h5\_redirect\_url|可选|String|微信香港钱包公众号支付跳转url,支付宝WAP跳转url
-钱包|wallet|可选|String|限定支付钱包地区如HK，CN
+钱包|wallet|可选|String|限定支付钱包地区如HK,CN  仅支付宝online有效
 
 
 #### payment 参数说明
@@ -2169,7 +2169,7 @@ PS:根据微信的官方文档，汇率值每天更新一次；返回是兑换�
 
 ## Update
 
-2021.01.29
+2021.02.02
 
 
 
