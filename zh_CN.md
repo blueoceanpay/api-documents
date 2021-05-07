@@ -251,7 +251,7 @@ h5\_redirect\_url|h5\_redirect\_url|可选|String|微信香港钱包公众号支
 |blueocean.qrcode | 混合二维码 可以直接跳转到qrcode对应的网址支付，也可以生成二维码供用户扫描 |
 |wechat.qrcode | 微信二维码 |
 |wechat.jsapi | 公众号、小程序支付 |
-|wechat.h5 | 微信H5支付(WEB在手机浏览器打开的场景) |
+|wechat.wappay | 微信H5支付(WEB在手机浏览器打开的场景) |
 |wechat.app | 微信APP支付 |
 |unionpay.qrcode | 银联二维码 |
 |unionpay.link | 银联UPOP |
