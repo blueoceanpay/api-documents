@@ -238,6 +238,7 @@ body|body|可选|String|商品名称
 附加数据|attach|可选|String|附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据
 h5\_redirect\_url|h5\_redirect\_url|可选|String|微信香港钱包公众号支付跳转url,支付宝WAP跳转url
 钱包|wallet|可选|String|限定支付钱包地区如HK,CN  仅支付宝online有效
+客户IP | spbill_create_ip | 否 | 支付用户的IP,微信H5(MWEB)必传
 
 
 #### payment 参数说明
@@ -251,7 +252,7 @@ h5\_redirect\_url|h5\_redirect\_url|可选|String|微信香港钱包公众号支
 |blueocean.qrcode | 混合二维码 可以直接跳转到qrcode对应的网址支付，也可以生成二维码供用户扫描 |
 |wechat.qrcode | 微信二维码 |
 |wechat.jsapi | 公众号、小程序支付 |
-|wechat.wappay | 微信H5支付(WEB在手机浏览器打开的场景) |
+|wechat.mweb | 微信H5支付(WEB在手机浏览器打开的场景) |
 |wechat.app | 微信APP支付 |
 |unionpay.qrcode | 银联二维码 |
 |unionpay.link | 银联UPOP |
@@ -275,25 +276,81 @@ PAYERROR:支付异常
 
 响应结果response.data数据说明
 
-字段|变量名|类型|描述
-----|----|---|----
-订单id|id|Int|如:10357
-蓝海订单编号|sn|String|示例: 1120180209xxxxxxxxxxxxxxxxxx 唯一标号，可以用于查询，关闭，退款等操作
-货币|fee_type|String|交易货币 如 HKD,AUD
-商户名称|mch_name|String|如 "BlueOcean Pay"
-商户Id|out\_trade\_no|String|商户订单号 如: "1120180209xxxxxxxxxxxxxxxx"
-支付方交易号|transaction_id|String| P563xxxxxxxxxxxxx
-支付提供方|provider|String|如:alipay,wechat
-订单时间|create_time|Int|时间戳 如: 1518155270
-支付时间|time_end|Int|成功支付的时间戳 如1518155297
-交易状态|trade_state|String| NOTPAY
-二维码文本|qrcode|String|扫码支付时存在，客户端使用第三方工具，将该内容生成二维码，供用户扫描付款 如 "https://qr.alipay.com/bax03112k12liy7lrysg2004", "weixin://wxpay/bizpayurl?pr=HBXdDeM"
-实际支付金额|total_fee|Int|用户需要支付的金额 单位为"分" 如:10
-优惠金额|discount|Int|优惠金额，用于商家自身系统集成，显示 如:2
-数据签名|sign|String|如"7FB42F08C85670A86431F9710xxxxxx",用于本地校验
+| 字段 | 变量名 | 类型 | 描述 |
+|----|----|---|----|
+| 订单ID | id | Int | 如:10357 |
+| 蓝海订单编号 | sn | String | 示例: 1120180209xxxxxxxxxxxxxxxxxx 唯一标号，可以用于查询，关闭，退款等操作 |
+| 下单币种 | fee_type | String | 交易货币 如：HKD,AUD |
+| 实付币种 | cash_fee_type | String | 客户实际付款的币种 如：CNY,HKD |
+| 商户名称 | mch_name | String | 如 "BlueOcean Pay" |
+| 商户Id | out\_trade\_no | String | 商户订单号 如: "1120180209xxxxxxxxxxxxxxxx" |
+| 支付方交易号 | transaction_id | String | P563xxxxxxxxxxxxx |
+| 支付提供方 | provider | String | 如:alipay,wechat |
+| 订单时间 | create_time | Int | 时间戳 如: 1518155270 |
+| 支付时间 | time_end | Int | 成功支付的时间戳 如1518155297 |
+| 交易状态 | trade_state | String| 如：NOTPAY |
+| 二维码文本 | qrcode | String |扫码支付时存在，客户端使用第三方工具，将该内容生成二维码，供用户扫描付款 如 "https://qr.alipay.com/bax03112k12liy7lrysg2004", "weixin://wxpay/bizpayurl?pr=HBXdDeM" |
+| 微信H5文本 | mweb_url | String | 使用微信H5支付时存在，直接跳转该URL即可完成微信H5支付 |
+| 实际支付金额 | total_fee | Int | 用户需要支付的金额 单位为"分" 如:10 |
+| 优惠金额 | discount | Int | 优惠金额，用于商家自身系统集成，显示 如:2 |
+| 数据签名 | sign | String | 如"7FB42F08C85670A86431F9710xxxxxx",用于本地校验 |
 
 
 ### 请求示例
+
+#### 微信H5实例：
+请求参数
+```
+{
+    "appid": "1000258",
+    "out_trade_no": "11202103291520556xxxxxxxxxxxxx",
+    "payment": "wechat.mweb",
+    "spbill_create_ip":"183.14.29.179",
+    "total_fee": "20",
+    "sign": "FSFHSDXXXXXXXXXXXX"
+}
+```
+响应结果
+```
+{
+    "code": 200,
+    "message": "success",
+    "data": {
+        "adapter": "wechat",
+        "appid": 1000258,
+        "attach": "",
+        "bank_type": "",
+        "body": "Shopping",
+        "cash_fee": "0",
+        "cash_fee_type": "",
+        "create_time": "1620467095",
+        "detail": "{\"goods_detail\":[{\"wxpay_goods_id\":\"7372\"}]}",
+        "discount": "0",
+        "fee_type": "HKD",
+        "id": "2492386",
+        "is_print": "0",
+        "is_subscribe": "N",
+        "mch_name": "BlueOcean Pay",
+        "mweb_url": "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx081744554937890xxxxxxxxxxx&package=45542939",
+        "nonce_str": "4GkNxPT0TR",
+        "out_trade_no": "11202103291520556xxxxxxxxxxxxxxx",
+        "pay_amount": "20",
+        "provider": "wechat",
+        "qrcode": "",
+        "refundable": 0,
+        "sn": "1120210508174455543xxxxxxxxxxx",
+        "time_end": 0,
+        "total_fee": "20",
+        "total_refund_fee": 0,
+        "trade_state": "USERPAYING",
+        "trade_type": "MWEB",
+        "transaction_id": "",
+        "wallet": "CN",
+        "sign": "83326E1EE0xxxxxxxxxxxxxxxxxx"
+    }
+}
+```
+
 
 #### 支付宝二维码示例:
 
