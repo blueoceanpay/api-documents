@@ -869,20 +869,22 @@ wx.ready(function(){
 支付完成后，平台会把相关支付结果通过数据流的形式发送给商户，商户需要接收处理，并按文档规范返回应答。
 回调参数
 
-字段|变量名|类型|描述
-----|----|---|----
-付款银行|bank_type|String|付款银行编码,如:CFT
-付款金额|cash_fee|Int|用户付款的金额，单位为"分" 如：20
-支付货币类型|cash_fee_type|String|交易货币 如 CNY,HKD,AUD
-币种|fee_type|String|币种 如 CNY,HKD,AUD
-商户订单号|out\_trade\_no|String|商户订单号 如: "11201802091347484054542598"
-支付方交易号|transaction_id|String| 如: P5631VZG299QZN94JD
-支付完成时间|time_end|String|如:20190402162714
-订单金额|total_fee|Int|订单金额 如：20
-交易类型|trade_type|String|如: NATIVE
-appid|appid|String| appid,由商户后台获取，或者登录获取
-随机字符串|nonce_str|String|随机字符串 如:O2r8GjZ46e
-数据签名|sign|String|如"7FB42F08C85670A86431xxxxxxxxxxxx",用于本地校验
+| 字段 | 变量名 | 类型 | 描述 |
+|----|----|---|----|
+| 付款银行 | bank_type | String | 付款银行编码,如:CFT |
+| 付款金额 | cash_fee | Int | 用户付款的金额，单位为"分" 如：20 |
+| 支付货币类型 | cash_fee_type | String | 交易货币 如 CNY,HKD,AUD |
+| 下单标价币种 | fee_type | String | 币种 如 CNY,HKD,AUD |
+| 商户订单号 | out\_trade\_no | String | 商户订单号 如: "11201802091347484054542598" |
+| 支付方交易号 | transaction_id | String | 如: P5631VZG299QZN94JD |
+| 支付完成时间 | time_end | String | 如:20190402162714 |
+| 订单金额 | total_fee | Int | 订单金额 如：20 |
+| 交易类型 | trade_type | String | 如: NATIVE |
+| 商户ID | appid | String | appid,由商户后台获取，或者登录获取 |
+| 随机字符串 | nonce_str | String | 随机字符串 如:O2r8GjZ46e |
+| 数据签名 | sign | String | 如"7FB42F08C85670A86431xxxxxxxxxxxx",用于本地校验 |
+| 发送版本 | verison | String | 蓝海回调版本(商户可忽略) |
+| 蓝海订单号 | sn | String | 蓝海生成的订单号，可用于查询订单 |
 
 响应参数
  SUCCESS
