@@ -220,25 +220,25 @@ Pos机根据使用场景，提交相应请求参数，完成相应支付业务
 ```
 ### Parameters 请求参数
 
-字段|变量名|必填|类型|描述
-----|----|----|----|----
-appid|appid|是|String|appid,由商户后台获取，或者登录获取
-签名|sign|是|String|参考签名方法
-支付方式|payment|是|String|micropay,alipay.qrcode,wechat.qrcode
-支付提供方|provider|可选|String|provider取值:wechat,alipay 当payment为micropay时,如果指定了provider,则会检查相应的支付授权码是否是对应的支付提供方的code，如果不是，不能支付
-订单金额|total_fee|是|Int|支付金额 单位为"分" 如10即0.10元
-支付授权码|code|可选|String|payment为"micropay"时填写 如支付宝 288271620985824610 微信 134519771100657507 服务端据此参数值区分
-商户自身订单号|out\_trade\_no|可选|String|如果商户有自己的订单系统，可以自己生成订单号，否则建议交由蓝海支付后台自动生成
-异步通知url|notify_url|可选|String|异步通知url
-openid|sub_openid|可选|String|商户公众号、小程序获取的openid
-微信APPID|sub_appid|可选|String|商户公众号、小程序、APP的AppId(微信公众号、小程序、APP支付必传)
-sub\_blue\_mch\_id|sub\_blue\_mch\_id|可选|Int|蓝海子商户Id
-store\_id|store\_id|可选|Int|Store Id
-body|body|可选|String|商品名称
-附加数据|attach|可选|String|附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据
-h5\_redirect\_url|h5\_redirect\_url|可选|String|微信香港钱包公众号支付跳转url,支付宝WAP跳转url
-钱包|wallet|可选|String|限定支付钱包地区如HK,CN  仅支付宝online有效
-客户IP | spbill_create_ip | 否 | 支付用户的IP,微信H5(MWEB)必传
+| 字段 | 变量名 | 必填 | 类型 | 描述 |
+|----|----|----|----|----|
+| appid | appid | 是 | String | appid,由商户后台获取，或者登录获取 |
+| 签名 | sign | 是 | String | 参考签名方法 |
+| 支付方式 | payment | 是 | String | micropay,alipay.qrcode,wechat.qrcode等，详见参数说明 |
+| 支付提供方 | provider | 可选 | String | provider取值:wechat,alipay 当payment为micropay时,如果指定了provider,则会检查相应的支付授权码是否是对应的支付提供方的code，如果不是，不能支付 |
+| 订单金额 | total_fee | 是 | Int | 支付金额 单位为"分" 如10即0.10元 |
+| 支付授权码 | code | 可选 | String | payment为"micropay"时填写 如支付宝 288271620985824610 微信 134519771100657507 服务端据此参数值区分 |
+| 商户自身订单号 | out\_trade\_no | 可选 | String | 如果商户有自己的订单系统，可以自己生成订单号，否则建议交由蓝海支付后台自动生成 |
+| 异步通知url | notify_url | 可选 | String | 异步通知url |
+| openid | sub_openid | 可选 | String | 商户公众号、小程序获取的openid |
+| 微信APPID | sub_appid | 可选 | String | 商户公众号、小程序、APP的AppId(微信公众号、小程序、APP支付必传) |
+| sub\_blue\_mch\_id | sub\_blue\_mch\_id | 可选 | Int | 蓝海子商户Id |
+| store\_id | store\_id | 可选 | Int | Store Id |
+| body | body | 可选 | String | 商品名称 |
+| 附加数据 |attach | 可选 | String | 附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据 |
+| h5\_redirect\_url | h5\_redirect\_url | 可选 | String | 微信香港钱包公众号支付跳转url,支付宝WAP跳转url |
+| 钱包 | wallet | 可选 | String | 限定支付钱包地区如HK,CN（注意：仅支付宝online有效） |
+| 客户IP | spbill_create_ip | 可选 | String | 支付用户的IP,微信H5(MWEB)必传 |
 
 
 #### payment 参数说明
@@ -270,6 +270,18 @@ CLOSED:已关闭
 REVOKED:已撤销
 USERPAYING:支付中
 PAYERROR:支付异常
+```
+
+### 交易类型 trade_type 说明
+```
+NATIVE: 微信线下码/支付宝线下码
+JSAPI: 微信小程序/公众号/商户静态码
+MICROPAY: 微信B2C
+APP: 微信APP/支付宝APP
+WAPPAY: 支付宝H5
+FACEPAY: 支付宝B2C
+LINK: 银联在线
+MWEB: 微信H5支付
 ```
 
 ### 正确响应数据说明
@@ -2226,8 +2238,8 @@ PS:根据支付宝的官方文档，汇率值每天更新一次；返回的汇�
 PS:根据微信的官方文档，汇率值每天更新一次；返回是兑换人民币的汇率。
 
 ## Update
-
-2021.02.02
+- By：YUN
+- Time:2021.05.12
 
 
 
