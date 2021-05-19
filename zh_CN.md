@@ -704,7 +704,6 @@ MWEB: 微信H5支付
   "payment": "wechat.app",
   "sub_appid": "wx6f4xxxxxxxxxxxxxxxxxx",
   "total_fee": 501,
-  "wallet": "CN",
   "store_id": "1000342",
   "body": "test",
   "sign": "0BDCCE6962C76082E6xxxxxxxxxxxxxxx"
