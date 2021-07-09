@@ -13,13 +13,15 @@
 3. 字符串編碼請統一使用UTF-8
 
 4. 簽名算法MD5
-  
+
+#### 注意：
+1. 接口文檔部分字段使用`xxxxxxxxxxxx`做了信息脫敏處理，注意甄別
  
 ### 1.2 參數簽名
 
 1.2.1. 假設請求參數如下：
 
-```
+```json
 {
     "appid":"1000010",
     "name":"BlueOcean Pay",
@@ -214,37 +216,40 @@ Pos機根據使用場景，提交相應請求參數，完成相應支付業務
 ```
 ### Parameters 請求參數
 
-字段|變量名|必填|類型|描述
-----|----|----|----|----
-appid|appid|是|String|appid,由商戶後台獲取，或者登錄獲取
-簽名|sign|是|String參考簽名方法
-支付方式|payment|是|String|micropay,alipay.qrcode,wechat.qrcode
-訂單金額|total_fee|是|Int|支付金額 單位為"分" 如10即0.10元
-支付授權碼|code|可選|String|payment為"micropay"時填寫 如支付寶 288271620985824610 微信 134519771100657507 服務端據此參數值區分
-商戶自身訂單號|out\_trade\_no|可選|String|如果商戶有自己的訂單系統，可以自己生成訂單號，否則建議交由藍海支付後台自動生成
-異步通知url|notify_url|可選|String|異步通知url
-openid|sub_openid|可選|String|商戶公眾號、小程序獲取的openid 
-appid|sub_appid|可選|String|商戶公眾號、小程序AppId
-sub\_blue\_mch\_id|sub\_blue\_mch\_id|No|BlueOceanPay Sub merchant Id|BlueOceanPay Sub merchant Id
-store\_id|store\_id|可选|Store Id|Store Id
-body|body|可選|商品名称|商品名称
-附加數據|attach|可選|String|附加數據，在查詢API和支付通知中原樣返回，該字段主要用於商戶攜帶訂單的自定義數據
-h5\_redirect\_url|h5\_redirect\_url|可選|String|微信香港錢包公眾號支付跳轉url,支付寶WAP跳轉url
-钱包|wallet|可選|String|限定支付錢包如HKD，CN
+| 字段 | 變量名 | 必填 | 類型 | 描述 |
+|----|----|----|----|----|
+| appid | appid | 是 | String | appid,由商戶後台獲取，或者登錄獲取 |
+| 簽名 | sign | 是 | String參考簽名方法 |
+| 支付方式 | payment | 是 | String | micropay,alipay.qrcode,wechat.qrcode |
+| 支付提供方 | provider | 可選 | String | 可指定wechat,alipay,unionpay |
+| 訂單金額 | total_fee | 是 | Int | 支付金額 單位為"分" 如10即0.10元 |
+| 支付授權碼 | code | 可選 | String | payment為"micropay"時填寫 如支付寶 288271620985824610 微信 134519771100657507 服務端據此參數值區分 |
+| 商戶自身訂單號 | out\_trade\_no | 可選 | String | 如果商戶有自己的訂單系統，可以自己生成訂單號，否則建議交由藍海支付後台自動生成 |
+| 異步通知url | notify_url | 可選 | String | 異步通知url |
+| openid | sub_openid | 可選 | String | 商戶公眾號、小程序獲取的openid |
+| 微信APPID | sub_appid | 可選 | String | 商戶公眾號、小程序AppId |
+| 門店ID | store\_id | 可选 | Store Id | Store Id |
+| body | body | 可選 | 商品名称 | 商品名称 |
+| 附加數據 | attach | 可選 | String | 附加數據，在查詢API和支付通知中原樣返回，該字段主要用於商戶攜帶訂單的自定義數據 |
+| h5\_redirect\_url | h5\_redirect\_url | 可選 | String | 微信香港錢包公眾號支付跳轉url,支付寶WAP跳轉url
+| 钱包 | wallet | 可選 | String | 限定支付錢包如HK，CN |
+| 客戶IP | spbill_create_ip | 可選 | String | 支付用戶的IP,微信H5(MWEB)必传 |
 
 #### payment 參數說明
 
-參數值|描述
-----------|----------
-micropay|刷卡支付 此時需傳遞支付授權碼 `code` 參數
-alipay.qrcode|支付寶二維碼
-alipay.wappay|支付寶WAP線上
-wechat.qrcode|微信二維碼
-blueocean.qrcode|混合二維碼 可以直接跳轉到qrcode對應的網址支付，也可以生成二維碼供用戶掃描
-wechat.jsapi|公眾號、小程序支付
-wechat.app|微信APP支付
-unionpay.qrcode|銀聯二維碼
-unionpay.link|銀聯UPOP
+| 參數值 | 描述 |
+|----------|----------
+| micropay | 刷卡支付 此時需傳遞支付授權碼 `code` 參數 |
+| alipay.qrcode | 支付寶二維碼 |
+| alipay.wappay | 支付寶WAP線上 |
+| alipay.app | 支付宝APP |
+| blueocean.qrcode | 混合二維碼 可以直接跳轉到qrcode對應的網址支付，也可以生成二維碼供用戶掃描 |
+| wechat.qrcode | 微信二維碼 |
+| wechat.jsapi | 公眾號、小程序支付 |
+| wechat.mweb | 微信H5支付(WEB在手机浏览器打开的场景) |
+| wechat.app | 微信APP支付 |
+| unionpay.qrcode | 銀聯二維碼 |
+| unionpay.link | 銀聯UPOP |
 
 支付返回後，檢查交易狀態trade_state,並根據其結果，決定是否調用訂單查詢接口進行結果查詢處理
 
@@ -258,6 +263,18 @@ CLOSED:已關閉
 REVOKED:已撤銷
 USERPAYING:支付中
 PAYERROR:支付異常
+```
+
+### 交易类型 trade_type 说明
+```
+NATIVE: 微信線下碼/支付寶線下碼
+JSAPI: 微信小程序/公眾號/商戶靜態碼
+MICROPAY: 微信B2C
+APP: 微信APP/支付寶APP
+WAPPAY: 支付寶H5
+FACEPAY: 支付宝B2C
+LINK: 银联在线
+MWEB: 微信H5支付
 ```
 
 ### 正確響應數據說明
@@ -1477,5 +1494,5 @@ appid|appid|是|String(32)|appid,登錄時獲取
 
 
 ## Update
-
-2019.12.12
+- By：Yun
+- Time：2021.07.09

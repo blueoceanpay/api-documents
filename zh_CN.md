@@ -21,7 +21,7 @@
 
 1.2.1. 假设请求参数如下：
 
-```
+```json
 {
     "appid":"1000010",
     "name":"BlueOcean Pay",
@@ -232,8 +232,7 @@ Pos机根据使用场景，提交相应请求参数，完成相应支付业务
 | 异步通知url | notify_url | 可选 | String | 异步通知url |
 | openid | sub_openid | 可选 | String | 商户公众号、小程序获取的openid |
 | 微信APPID | sub_appid | 可选 | String | 商户公众号、小程序、APP的AppId(微信公众号、小程序、APP支付必传) |
-| sub\_blue\_mch\_id | sub\_blue\_mch\_id | 可选 | Int | 蓝海子商户Id |
-| store\_id | store\_id | 可选 | Int | Store Id |
+| 门店ID | store\_id | 可选 | Int | Store Id |
 | body | body | 可选 | String | 商品名称 |
 | 附加数据 |attach | 可选 | String | 附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据 |
 | h5\_redirect\_url | h5\_redirect\_url | 可选 | String | 微信香港钱包公众号支付跳转url,支付宝WAP跳转url |
@@ -380,7 +379,7 @@ MWEB: 微信H5支付
 
 响应结果
 
-```
+```json
 {
   "code": 200,
   "message": "success",
@@ -420,7 +419,7 @@ MWEB: 微信H5支付
 
 #### 支付宝WAP线上示例
 
-```
+```json
 {
   "appid": "1000258",
   "payment": alipay.wappay,
@@ -436,7 +435,7 @@ MWEB: 微信H5支付
 
 响应
 
-```
+```json
 {
   "code": 200,
   "message": "success",
@@ -476,7 +475,7 @@ MWEB: 微信H5支付
 
 请求参数
 
-```
+```json
 {
   "appid": "1000258",
   "discount": 0,
@@ -489,7 +488,7 @@ MWEB: 微信H5支付
 
 响应
 
-```
+```json
 {
   "code": 200,
   "message": "success",
@@ -529,7 +528,7 @@ MWEB: 微信H5支付
 
 请求参数
 
-```
+```json
 {
   "appid": "1000258",
   "code": "134602370743606195",
@@ -541,7 +540,7 @@ MWEB: 微信H5支付
 
 响应
 
-```
+```json
 {
   "code": 200,
   "message": "OK",
@@ -580,7 +579,7 @@ MWEB: 微信H5支付
 
 请求参数
 
-```
+```json
 {
     "appid":"1000258",
     "payment":"alipay.app",
@@ -1293,7 +1292,7 @@ CHANGE:退款异常
 
 响应结果
 
-```
+```json
 {
   "code": 200,
   "message": "success",
@@ -1319,24 +1318,6 @@ CHANGE:退款异常
         "refund_desc": "",
         "refund_time": 1518079526,
         "pay_amount": 2
-      },
-      {
-        "id": "12647",
-        "provider": "alipay",
-        "blue_mch_id": "1000258",
-        "store_id": "1000321",
-        "out_trade_no": "1120180208xxxxxxxxxxxxxxxxxxx",
-        "transaction_id": "MJ86QYO3xxxxxxxxxxxxxx",
-        "out_refund_no": "1120180208xxxxxxxxxxxxxxxxxxxxx",
-        "refund_id": "",
-        "total_fee": "10",
-        "refund_fee": "10",
-        "discount": "0",
-        "fee_type": "HKD",
-        "refund_status": "SUCCESS",
-        "refund_desc": "",
-        "refund_time": 1518072577,
-        "pay_amount": 10
       }
     ]
   }
@@ -2031,7 +2012,7 @@ appid|appid|是|String|appid,登录时获取
 ### Response 响应示例
 #### 获取成功示例
 
-```
+```json
 {
     "code": 200,
     "message": "success",
@@ -2047,144 +2028,6 @@ appid|appid|是|String|appid,登录时获取
             "releaseTime": "10:05:11",
             "currency": "GBP",
             "rate": "8.790200"
-        },
-        "PHP": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:08",
-            "currency": "PHP",
-            "rate": "0.136640"
-        },
-        "CHF": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "CHF",
-            "rate": "7.425200"
-        },
-        "EUR": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "EUR",
-            "rate": "8.025700"
-        },
-        "NZD": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "NZD",
-            "rate": "4.663700"
-        },
-        "IDR": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:06",
-            "currency": "IDR",
-            "rate": "0.000462"
-        },
-        "MOP": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "MOP",
-            "rate": "0.821200"
-        },
-        "MYR": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:07",
-            "currency": "MYR",
-            "rate": "1.622391"
-        },
-        "NOK": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "NOK",
-            "rate": "0.760200"
-        },
-        "LKR": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:08",
-            "currency": "LKR",
-            "rate": "0.035005"
-        },
-        "THB": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "THB",
-            "rate": "0.219178"
-        },
-        "RUB": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:08",
-            "currency": "RUB",
-            "rate": "0.088930"
-        },
-        "KRW": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "KRW",
-            "rate": "0.006140"
-        },
-        "AUD": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "AUD",
-            "rate": "4.985100"
-        },
-        "DKK": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "DKK",
-            "rate": "1.079100"
-        },
-        "SGD": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "SGD",
-            "rate": "4.935700"
-        },
-        "JPY": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "JPY",
-            "rate": "0.063653"
-        },
-        "CAD": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "CAD",
-            "rate": "5.126900"
-        },
-        "TWD": {
-            "releaseDate": "2020-12-20",
-            "releaseTime": "11:20:11",
-            "currency": "TWD",
-            "rate": "0.235076"
-        },
-        "SEK": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "SEK",
-            "rate": "0.792500"
-        },
-        "ZAR": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:08",
-            "currency": "ZAR",
-            "rate": "0.446900"
-        },
-        "CZK": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:08",
-            "currency": "CZK",
-            "rate": "0.307109"
-        },
-        "USD": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "10:05:11",
-            "currency": "USD",
-            "rate": "6.562900"
-        },
-        "AED": {
-            "releaseDate": "2020-12-21",
-            "releaseTime": "09:30:07",
-            "currency": "AED",
-            "rate": "1.781142"
         }
     }
 }
@@ -2240,7 +2083,7 @@ PS:根据微信的官方文档，汇率值每天更新一次；返回是兑换�
 
 ## Update
 - By：YUN
-- Time:2021.05.12
+- Time:2021.07.09
 
 
 
