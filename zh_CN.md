@@ -881,7 +881,7 @@ wx.ready(function(){
 | 商户ID | appid | String | appid,由商户后台获取，或者登录获取 |
 | 随机字符串 | nonce_str | String | 随机字符串 如:O2r8GjZ46e |
 | 数据签名 | sign | String | 如"7FB42F08C85670A86431xxxxxxxxxxxx",用于本地校验 |
-| 发送版本 | verison | String | 蓝海回调版本(商户可忽略) |
+| 发送版本 | version | String | 蓝海回调版本(商户可忽略) |
 | 蓝海订单号 | sn | String | 蓝海生成的订单号，可用于查询订单 |
 
 响应参数
