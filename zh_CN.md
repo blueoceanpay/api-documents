@@ -316,6 +316,7 @@ MWEB: 微信H5支付
     "appid": "1000258",
     "out_trade_no": "11202103291520556xxxxxxxxxxxxx",
     "payment": "wechat.mweb",
+    "h5_redirect_url": "https://www.blueoceanpay.com"
     "spbill_create_ip":"183.14.29.179",
     "total_fee": "20",
     "sign": "FSFHSDXXXXXXXXXXXX"
