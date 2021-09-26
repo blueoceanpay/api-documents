@@ -746,29 +746,35 @@ wx.ready(function(){
 ### 回调
 
 支付完成後，平臺會把相關支付結果通過數據流的形式發送給商戶，商戶需要接收處理，並按文檔規範返回應答。
+
 回調參數
 
-字段|变量名|类型|描述
-----|----|---|----
-付款銀行|bank_type|String|付款銀行編碼,如:CFT
-付款金額|cash_fee|Int|用戶付款的金額，如：20
-支付貨幣類型|cash_fee_type|String|交易貨幣 如 CNY,HKD,AUD
-幣種|fee_type|String|幣種 如 CNY,HKD,AUD
-商戶訂單號|out\_trade\_no|String|商戶訂單號 如: "11201802091347484054542598"
-支付方交易號|transaction_id|String| 如: P5631VZG299QZN94JD
-支付完成時間|time_end|String|如:20190402162714
-訂單金額|total_fee|Int|訂單金額 如：20
-交易類型|trade_type|String|如: NATIVE
-appid|appid|String| appid,由商戶後臺獲取，或者登錄獲取
-隨機字符串|nonce_str|String|隨機字符串 如:O2r8GjZ46e
-數據簽名|sign|String|如"7FB42F08C85670A86431F97109DE8683",用於本地校驗
+|字段|变量名|类型|描述|
+|---|---|---|---|
+| 付款銀行 | bank_type | String | 付款銀行編碼,如:CFT |
+| 付款金額 | cash_fee | Int | 用戶付款的金額，如：20 |
+| 支付貨幣類型 | cash_fee_type | String | 交易貨幣 如 CNY,HKD,AUD |
+| 幣種 | fee_type | String | 幣種 如 CNY,HKD,AUD |
+| 商戶訂單號 | out_trade_no | String | 商戶訂單號 如: "11201802091347484054542598" |
+| 支付方交易號 | transaction_id | String| 如: P5631VZG299QZN94JD |
+| 支付完成時間 | time_end | String | 如:20190402162714 |
+| 訂單金額 | total_fee | Int | 訂單金額 如：20 |
+| 交易類型 | trade_type | String | 如: NATIVE |
+| APPID | appid | String| appid,由商戶後臺獲取，或者登錄獲取 |
+| 隨機字符串 | nonce_str | String | 隨機字符串 如:O2r8GjZ46e |
+| 數據簽名 | sign | String | 如"7FB42F08C85670A86431F97109DE8683",用於本地校驗 |
+| 回調程序版本 | version | String | 藍海回調程序的版本(商户可忽略) |
+| 藍海訂單號 | sn | String | 藍海平台的唯一訂單號，可用來查詢訂單 |
 
 響應參數
- SUCCESS
-
+```
+SUCCESS
+```
 1. 同樣的通知可能會多次發送給商戶系統。商戶系統必須能夠正確處理重復的通知
 
 2. 後臺通知交互時，如果平臺收到商戶的應答不符合規範或超時，平臺會判定本次通知失敗，按照機制重新發送通知，
+
+3. 參數需要使用`POST`的`x-www-form-urlencode`形式接收
 
 ### 2.2 退款
 
