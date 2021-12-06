@@ -60,6 +60,8 @@ sign的值為:
 08C612FB4D2D52C8C913EA00E3DABC8B
 ```
 
+[签名校验工具](http://doc-tools.blueoceantech.co/sign_tools.html)
+
 ### 1.3 請求頭
 
 為了便於追蹤、統計API請求
@@ -1508,4 +1510,4 @@ appid|appid|是|String(32)|appid,登錄時獲取
 
 ## Update
 - By：Yun,yong
-- Time：2021.11.22
+- Time：2021.12.06
