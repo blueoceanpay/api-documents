@@ -23,4 +23,4 @@
 
 github: https://github.com/blueoceanpay/payment-demo
 
-website: http://demo.blueoceanpay.cn
+website: http://demo.blueoceantech.co
