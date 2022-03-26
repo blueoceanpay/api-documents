@@ -60,6 +60,17 @@ sign的值为:
 08C612FB4D2D52C8C913EA00E3DABC8B
 ```
 
+1.2.5. 最后得出的请求参数
+```json
+{
+    "appid":"1000010",
+    "name":"BlueOcean Pay",
+    "region":"HK",
+    "business":"Online payment",
+    "sign": "08C612FB4D2D52C8C913EA00E3DABC8B"
+}
+```
+
 ### 1.3 请求头
 
 为了便于追踪、统计API请求
